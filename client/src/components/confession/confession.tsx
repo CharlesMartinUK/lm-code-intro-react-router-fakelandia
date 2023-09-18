@@ -3,15 +3,6 @@ import { useState } from 'react'
 const Confession : React.FC = () => {
 	
 	
-	function textAreaChange() {
-		
-		//console.log("is is changing")
-		
-		//if(document.getElementById("confession")?.value.length > 10) 
-			//setSubmitButtonState(false)
-		
-	}
-	
 	const [subjectText, setSubjectText] = useState("")
 	const [confessionText, setConfessionText] = useState("")
 	
