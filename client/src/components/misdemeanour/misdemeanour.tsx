@@ -6,7 +6,7 @@ import {useFetchData} from '../../hooks/use_fetch_data'
 export type MisdemeanourDetail = { citizenId: string, misdemeanour:string, date:string  };
 
 /*
-console.log(data)
+// keep and use later
 	return (<>Misdemeanour!
 		 <UserContext.Provider value={mis}>
 			 {
@@ -60,7 +60,7 @@ const Misdemeanour : React.FC = () => {
 	}
 	
 	
-	const mis = useState(mds)
+	//const mis = useState(mds)
 	
 	
 	//console.log(filterOptions)
