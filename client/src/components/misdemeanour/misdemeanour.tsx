@@ -3,7 +3,12 @@ import {useState, createContext, useContext  } from 'react'
 
 import {useFetchData} from '../../hooks/use_fetch_data'
 
+import { BASE_URL } from '../../utils/url'
+
 export type MisdemeanourDetail = { citizenId: string, misdemeanour:string, date:string  };
+
+
+
 
 /*
 // keep and use later
@@ -31,7 +36,7 @@ const Misdemeanour : React.FC = () => {
 	
 	//console.log("Headach")
 	
-	const { data, error, isFetching, status } = useFetchData<PassedMis>(`http://localhost:8080/api/misdemeanours/10`);
+	const { data, error, isFetching, status } = useFetchData<PassedMis>(BASE_URL+'api/misdemeanours/10');
 	
 	//const mis = useState(data?.misdemeanours)
 	
