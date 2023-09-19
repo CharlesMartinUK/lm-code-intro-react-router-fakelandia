@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import shouldDisable from './confession_utils'
  
-
+import {BASE_URL} from '../../utils/url'
 
 
 const Confession : React.FC = () => {
@@ -25,7 +25,7 @@ const Confession : React.FC = () => {
         body: JSON.stringify({ "subject": subjectText, "reason":option, "details":confessionText  })
 		};
 		
-		fetch('http://localhost:8080/api/confess', requestOptions)
+		fetch(BASE_URL+'api/confess', requestOptions)
 			.then(response => response.json())
 			.then(data => {
 				if(data.success == false)
@@ -37,7 +37,6 @@ const Confession : React.FC = () => {
 		
 	} 
  
-	
 	
 	var disableSubmit  = shouldDisable(subjectText, confessionText)
 	
