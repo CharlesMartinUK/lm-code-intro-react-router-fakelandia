@@ -1,12 +1,7 @@
 import { useState } from 'react'
 
-
-function shouldDisable(subject:string, text:string) {
-
-	if((text.length > 10) && (subject.length > 2 )) return false
-	
-	return true
-}
+import shouldDisable from './confession_utils'
+ 
 
 const Confession : React.FC = () => {
 	
