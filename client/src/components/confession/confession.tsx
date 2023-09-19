@@ -1,5 +1,13 @@
 import { useState } from 'react'
 
+
+function shouldDisable(subject:string, text:string) {
+
+	if((text.length > 10) && (subject.length > 2 )) return false
+	
+	return true
+}
+
 const Confession : React.FC = () => {
 	
 	
@@ -8,9 +16,8 @@ const Confession : React.FC = () => {
 	
 	//const [submitButtonState, setSubmitButtonState] = useState(true)
 	
-	var disableSubmit = true
+	var disableSubmit  = shouldDisable(subjectText, confessionText)
 	
-	if((confessionText.length > 10) && (subjectText.length > 2 )) disableSubmit = false
 	
 	return <>
 	
@@ -34,7 +41,7 @@ const Confession : React.FC = () => {
 		<option>Supporting Manchester United</option>
 		
 		</select> <br/>
-	
+		
 		<textarea rows={10} cols={50} onChange={(e) =>setConfessionText(e.target.value)}>
 		
 		</textarea><br/>
