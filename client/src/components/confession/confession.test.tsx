@@ -59,7 +59,7 @@ describe("Tests for confession page",  () => {
 	 
 	});
 	
-	test('Submit button diabled because not subject not long enough', async() => { // this test causes warning for some reason
+	test('Submit button disabled because not subject not long enough', async() => { // this test causes warning for some reason
 			
 	  const result = render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
