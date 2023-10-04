@@ -5,7 +5,7 @@ import {shouldDisable, textLongEnough, subjectLongEnough } from './confession_ut
 import {BASE_URL} from '../../utils/url'
 
 
-//only one used in multible places so just this as constant
+//only one used in multiple places so just this as constant
 const JUST_TALK = "just-talk"
 
 
