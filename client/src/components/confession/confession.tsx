@@ -5,11 +5,15 @@ import shouldDisable from './confession_utils'
 import {BASE_URL} from '../../utils/url'
 
 
+//only one used in multible places so just this as constant
+const JUST_TALK = "just-talk"
+
+
 const Confession : React.FC = () => {
 	
 	
 	const [subjectText, setSubjectText] = useState("")
-	const [option, setOption] = useState("")
+	const [option, setOption] = useState(JUST_TALK)
 	const [confessionText, setConfessionText] = useState("")
 	
 	//const [submitButtonState, setSubmitButtonState] = useState(true)
@@ -25,12 +29,15 @@ const Confession : React.FC = () => {
         body: JSON.stringify({ "subject": subjectText, "reason":option, "details":confessionText  })
 		};
 		
+		
+		//alert("Subject:"+subjectText+"  option:"+option+" details:"+confessionText)
+		
 		fetch(BASE_URL+'api/confess', requestOptions)
 			.then(response => response.json())
 			.then(data => {
-				if(data.success == false)
+				if(data.success === false)
 					alert("ERROR "+data.message)
-				else if(data.success == true) {
+				else if(data.success === true) {
 					alert(data.message) // supposed to add misdemeanours  here
 				}
 			});
@@ -54,8 +61,8 @@ const Confession : React.FC = () => {
 	
 	<form onSubmit={handleSubmit}>
 		Subject:<input type="text" onChange={(e) =>setSubjectText(e.target.value)} /><br/>
-		Reason for contact: <select onChange={(e)=>setOption(e.target.value)}>
-						<option value="just-talk">I just want to talk</option>
+		Reason for contact: <select onChange={(e)=>setOption(e.target.value)} defaultValue={JUST_TALK}>
+						<option value={JUST_TALK}>I just want to talk</option>
 						<option value="rudeness">Mild Public Rudeness</option>
 						<option value="lift">Speaking in a Lift</option>
 						
