@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import shouldDisable from './confession_utils'
+import {shouldDisable, textLongEnough, subjectLongEnough } from './confession_utils'
  
 import {BASE_URL} from '../../utils/url'
 
@@ -48,6 +48,12 @@ const Confession : React.FC = () => {
 	var disableSubmit  = shouldDisable(subjectText, confessionText)
 	
 	
+	let message = []
+	
+	if(!subjectLongEnough(subjectText)) message.push("Subject text needs to at least 2 characters")
+	
+	if(!textLongEnough(confessionText)) message.push("Confession text needs to be at least 10 characters")
+	
 	return <>
 	
 	<p>
@@ -74,6 +80,14 @@ const Confession : React.FC = () => {
 		<textarea rows={10} cols={50} onChange={(e) =>setConfessionText(e.target.value)}>
 		
 		</textarea><br/>
+		<div className="messageText">
+		{
+			message.map( (s) => {
+				return <div> {s} </div>
+			})
+		}
+		
+		</div>
 		
 		<button type="submit" disabled={disableSubmit} >Confess</button>
 	</form>

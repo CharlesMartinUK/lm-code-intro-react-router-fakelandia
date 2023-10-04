@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Confession from './confession';
 
-import shouldDisable from './confession_utils'
+import { shouldDisable } from './confession_utils'
 
 test('Confession: does element appear in text?', () => {
   render(<Confession />);  
