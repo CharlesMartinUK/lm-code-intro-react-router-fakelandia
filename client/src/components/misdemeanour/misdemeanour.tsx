@@ -70,9 +70,21 @@ const Misdemeanour : React.FC = () => {
 	
 	//console.log(filterOptions)
 	
+	//ADD THE EXTRA MIS CREATED BY USER
+	var extraItems = localStorage.getItem("mis")
+	
+	if(extraItems != null) {
+		var mis = JSON.parse(extraItems)
+		for(const t of mis){
+			mds.push(  {"date":t?.date,"misdemeanour": t?.misdemeanour, "citizenId": t?.citizenId} )
+		}
+	}
+	
+	
 	return (<>Misdemeanour!
 			<table className='misTable'><thead><tr><th>Citizen Id</th><th>Misdemeanour</th><th>Date</th><th>Punishment</th></tr></thead>
 			<tbody>
+			
 			 { mds.map ((m,i) => {
 					const w = getRandomInt(50)+50
 					const h = getRandomInt(50)+50

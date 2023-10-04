@@ -38,7 +38,38 @@ const Confession : React.FC = () => {
 				if(data.success === false)
 					alert("ERROR "+data.message)
 				else if(data.success === true) {
-					alert(data.message) // supposed to add misdemeanours  here
+					alert(data.message)
+					//alert(JSON.stringify(data, null, 4)) // supposed to add misdemeanours  here
+					if(data.justTalked == false) {
+						//console.log("added to list")
+						const mis = localStorage.getItem("mis");
+						
+						var r = []
+						
+						if(mis != null) {
+							r = JSON.parse(mis)
+						}
+						
+						
+						const today = new Date();
+						const yyyy = today.getFullYear();
+						let mm:any = today.getMonth() + 1; // Months start at 0!
+						let dd:any = today.getDate();
+
+						if (dd < 10) dd = '0' + dd;
+						if (mm < 10) mm = '0' + mm;
+
+						const formattedToday = dd + '/' + mm + '/' + yyyy;
+						
+						
+						//now add new item
+						//m.citizenId}</td><td>{m.misdemeanour}</td><td>{ m.date 
+						r.push( {"citizenId":999,"misdemeanour":option,"date":formattedToday}  )
+						
+						//alert(JSON.stringify(r, null, 4))
+						
+						localStorage.setItem("mis", JSON.stringify(r,null,4) )
+					}
 				}
 			});
 		
