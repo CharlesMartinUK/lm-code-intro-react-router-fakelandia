@@ -1,10 +1,10 @@
 export function shouldDisable(subject:string, text:string) {
 
-	if((textLongEnough(text)) && (subjectLongEnough(text) )) return false
+	if( (subjectLongEnough(subject) ) &&  (textLongEnough(text)) ) return false
 	
 	return true
 }
-
+  
 
 export function subjectLongEnough(subject:string) {
 	

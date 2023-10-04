@@ -82,8 +82,8 @@ const Confession : React.FC = () => {
 		</textarea><br/>
 		<div className="messageText">
 		{
-			message.map( (s) => {
-				return <div> {s} </div>
+			message.map( (s,i) => {
+				return <div key={i}> {s} </div>
 			})
 		}
 		
