@@ -66,7 +66,7 @@ const Confession : React.FC = () => {
 	</p>
 	
 	<form onSubmit={handleSubmit}>
-		Subject:<input type="text" onChange={(e) =>setSubjectText(e.target.value)} /><br/>
+		Subject:<input type="text"  onChange={(e) =>setSubjectText(e.target.value)} /><br/>
 		Reason for contact: <select onChange={(e)=>setOption(e.target.value)} defaultValue={JUST_TALK}>
 						<option value={JUST_TALK}>I just want to talk</option>
 						<option value="rudeness">Mild Public Rudeness</option>
