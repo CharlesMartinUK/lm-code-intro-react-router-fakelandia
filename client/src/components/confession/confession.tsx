@@ -41,6 +41,8 @@ const Confession : React.FC = () => {
 					alert(data.message)
 					//alert(JSON.stringify(data, null, 4)) // supposed to add misdemeanours  here
 					if(data.justTalked == false) {
+						
+						//ADD CONFESSION TO LOCAL STORAGE TO GET BACK ON MIS PAGE
 						//console.log("added to list")
 						const mis = localStorage.getItem("mis");
 						
@@ -87,42 +89,42 @@ const Confession : React.FC = () => {
 	
 	return <>
 	
-	<p>
-	its very difficult to catch people committing misdemanours so we 
-	appreciate it when citizens confess to us directly.
-	</p>
-	
-	<p>
-	However, if you're just having a hard day and need to vent then you're welcome to contact us here too. Up to you!
-	</p>
-	
-	<form onSubmit={handleSubmit}>
-		Subject:<input type="text"  onChange={(e) =>setSubjectText(e.target.value)} /><br/>
-		Reason for contact: <select onChange={(e)=>setOption(e.target.value)} defaultValue={JUST_TALK}>
-						<option value={JUST_TALK}>I just want to talk</option>
-						<option value="rudeness">Mild Public Rudeness</option>
-						<option value="lift">Speaking in a Lift</option>
-						
-						<option value="vegetables">Not Eating Your Vegetables</option>
-						<option value="united">Supporting Manchester United</option>
+		<p>
+		its very difficult to catch people committing misdemanours so we 
+		appreciate it when citizens confess to us directly.
+		</p>
 		
-		</select> <br/>
+		<p>
+		However, if you're just having a hard day and need to vent then you're welcome to contact us here too. Up to you!
+		</p>
 		
-		<textarea rows={10} cols={50} onChange={(e) =>setConfessionText(e.target.value)}>
-		
-		</textarea><br/>
-		<div className="messageText">
-		{
-			message.map( (s,i) => {
-				return <div key={i}> {s} </div>
-			})
-		}
-		
-		</div>
-		
-		<button type="submit" disabled={disableSubmit} >Confess</button>
-	</form>
-	</>
+		<form onSubmit={handleSubmit}>
+			Subject:<input type="text"  onChange={(e) =>setSubjectText(e.target.value)} /><br/>
+			Reason for contact: <select onChange={(e)=>setOption(e.target.value)} defaultValue={JUST_TALK}>
+							<option value={JUST_TALK}>I just want to talk</option>
+							<option value="rudeness">Mild Public Rudeness</option>
+							<option value="lift">Speaking in a Lift</option>
+							
+							<option value="vegetables">Not Eating Your Vegetables</option>
+							<option value="united">Supporting Manchester United</option>
+			
+			</select> <br/>
+			
+			<textarea rows={10} cols={50} onChange={(e) =>setConfessionText(e.target.value)}>
+			
+			</textarea><br/>
+			<div className="messageText">
+			{
+				message.map( (s,i) => {
+					return <div key={i}> {s} </div>
+				})
+			}
+			
+			</div>
+			
+			<button type="submit" disabled={disableSubmit} >Confess</button>
+		</form>
+		</>
 	
 }
 
