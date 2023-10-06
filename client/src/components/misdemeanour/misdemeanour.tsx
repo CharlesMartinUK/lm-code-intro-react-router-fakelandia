@@ -67,19 +67,8 @@ const Misdemeanour : React.FC = () => {
 					//console.log(path)
 					if((filterOptions == 'all') || (filterOptions === m.misdemeanour)) {
 						
-						
-						let emoj = "🤪"
-						switch (m.misdemeanour) {
-							case "united":
-								emoj = "😈"
-								break
-							case "lift":
-								emoj = "🗣"
-								break
-							//case "rudeness" // not needed because is default
-							case "vegetables":
-								emoj = "🥗"
-						}
+						let d :{[name: string]: string} =  {"united":"😈","lift":"🗣","vegetables": "🥗" , "rudeness": "🤪"}
+						let emoj = d[m.misdemeanour]
 						
 						return <tr key={i}><td>{m.citizenId}</td><td>{m.misdemeanour} {emoj}</td><td>{ m.date }</td><td><img src={path} />;</td></tr>
 					}
