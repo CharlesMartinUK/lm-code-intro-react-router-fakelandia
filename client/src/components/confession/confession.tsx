@@ -44,7 +44,7 @@ const Confession : React.FC = () => {
 						//console.log("added to list")
 						const mis = localStorage.getItem("mis");
 						
-						var r = []
+						let r = []
 						
 						if(mis != null) {
 							r = JSON.parse(mis)
@@ -76,7 +76,7 @@ const Confession : React.FC = () => {
 	} 
  
 	
-	var disableSubmit  = shouldDisable(subjectText, confessionText)
+	let disableSubmit  = shouldDisable(subjectText, confessionText)
 	
 	
 	let message = []
