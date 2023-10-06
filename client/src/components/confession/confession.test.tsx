@@ -23,8 +23,7 @@ describe("Tests for confession page",  () => {
 
 	test('Submit button enabled with valid entry', async() => { // this test causes warning for some reason
 			
-		
-	  const result = render(<Confession />);  
+	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
 	  await user.type(subject[0], 'I Confess');
 	  await user.type(subject[1], 'This is some very long text that is needed here');
@@ -37,7 +36,7 @@ describe("Tests for confession page",  () => {
 
 	test('Submit button diabled because not enough text', async() => { // this test causes warning for some reason
 			
-	  const result = render(<Confession />);  
+	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
 	  await user.type(subject[0], 'I ');
 	  await user.type(subject[1], 'This');
@@ -47,9 +46,9 @@ describe("Tests for confession page",  () => {
 	 
 	});
 
-	test('Submit button diabled because not message not long enough', async() => { // this test causes warning for some reason
+	test('Submit button disabled because not message not long enough', async() => { // this test causes warning for some reason
 			
-	  const result = render(<Confession />);  
+	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
 	  await user.type(subject[0], 'I Confess ');
 	 
@@ -61,7 +60,7 @@ describe("Tests for confession page",  () => {
 	
 	test('Submit button disabled because not subject not long enough', async() => { // this test causes warning for some reason
 			
-	  const result = render(<Confession />);  
+	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
 	  await user.type(subject[1], 'This is some very long text that is needed here');
 	 
