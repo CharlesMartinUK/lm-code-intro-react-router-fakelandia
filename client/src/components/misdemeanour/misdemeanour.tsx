@@ -1,27 +1,11 @@
 
 import {useState, createContext, useContext  } from 'react'
-
 import {useFetchData} from '../../hooks/use_fetch_data'
-
 import { BASE_URL } from '../../utils/url'
 
 export type MisdemeanourDetail = { citizenId: string, misdemeanour:string, date:string  };
 
 
-
-
-/*
-// keep and use later
-	return (<>Misdemeanour!
-		 <UserContext.Provider value={mis}>
-			 {
-				 
-			 }
-				
-		</UserContext.Provider>
-
-
-*/
 
 interface PassedMis  {'misdemeanours':MisdemeanourDetail[] }
 
@@ -81,8 +65,24 @@ const Misdemeanour : React.FC = () => {
 					//console.log(w)
 					const path = "https://picsum.photos/"+width+"/"+height
 					//console.log(path)
-					if((filterOptions == 'all') || (filterOptions === m.misdemeanour))
-						return <tr key={i}><td>{m.citizenId}</td><td>{m.misdemeanour}</td><td>{ m.date }</td><td><img src={path} />;</td></tr>
+					if((filterOptions == 'all') || (filterOptions === m.misdemeanour)) {
+						
+						
+						let emoj = "🤪"
+						switch (m.misdemeanour) {
+							case "united":
+								emoj = "😈"
+								break
+							case "lift":
+								emoj = "🗣"
+								break
+							//case "rudeness" // not needed
+							case "vegetables":
+								emoj = "🥗"
+						}
+						
+						return <tr key={i}><td>{m.citizenId}</td><td>{m.misdemeanour} {emoj}</td><td>{ m.date }</td><td><img src={path} />;</td></tr>
+					}
 				} )
 				 
 			 }
