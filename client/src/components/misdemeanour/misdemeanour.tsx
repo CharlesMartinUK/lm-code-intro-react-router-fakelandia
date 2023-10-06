@@ -76,7 +76,7 @@ const Misdemeanour : React.FC = () => {
 							case "lift":
 								emoj = "🗣"
 								break
-							//case "rudeness" // not needed
+							//case "rudeness" // not needed because is default
 							case "vegetables":
 								emoj = "🥗"
 						}
