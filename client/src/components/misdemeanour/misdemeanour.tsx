@@ -1,5 +1,5 @@
 
-import {useState, createContext, useContext  } from 'react'
+import {useState } from 'react'
 import {useFetchData} from '../../hooks/use_fetch_data'
 import { BASE_URL } from '../../utils/url'
 
@@ -59,22 +59,24 @@ const Misdemeanour : React.FC = () => {
 			<table className='misTable'><thead><tr><th>Citizen Id</th><th>Misdemeanour</th><th>Date</th><th>Punishment</th></tr></thead>
 			<tbody>
 			
-			 { mds.map ((m,i) => {
-					const width = getRandomInt(50)+50
-					const height = getRandomInt(50)+50
-					//console.log(w)
-					const path = "https://picsum.photos/"+width+"/"+height
-					//console.log(path)
-					if((filterOptions == 'all') || (filterOptions === m.misdemeanour)) {
-						
-						let d :{[name: string]: string} =  {"united":"😈","lift":"🗣","vegetables": "🥗" , "rudeness": "🤪"}
-						let emoj = d[m.misdemeanour]
-						
-						return <tr key={i}><td>{m.citizenId}</td><td>{m.misdemeanour} {emoj}</td><td>{ m.date }</td><td><img src={path} />;</td></tr>
-					}
-				} )
+				{	
+					mds.map ((m,i) => {
+						const width = getRandomInt(50)+50
+						const height = getRandomInt(50)+50
+						//console.log(w)
+						const path = "https://picsum.photos/"+width+"/"+height
+						//console.log(path)
+						if((filterOptions === 'all') || (filterOptions === m.misdemeanour)) {
+							
+							let d :{[name: string]: string} =  {"united":"😈","lift":"🗣","vegetables": "🥗" , "rudeness": "🤪"}
+							let emoj = d[m.misdemeanour]
+							
+							return <tr key={i}><td>{m.citizenId}</td><td>{m.misdemeanour} {emoj}</td><td>{ m.date }</td><td><img src={path}  />;</td></tr>
+						}
+					} )
 				 
-			 }
+				}
+				
 			 </tbody>
 			</table>	
 			
