@@ -19,4 +19,5 @@ export function textLongEnough(text:string) {
 }
 
 
-
+export const SUBJECT_TOO_SHORT_MESSAGE = "Subject text needs to at least 2 characters"
+export const MESSAGE_TOO_SHORT_MESSAGE = "Confession text needs to be at least 10 characters"

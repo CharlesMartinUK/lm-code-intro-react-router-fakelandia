@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import {shouldDisable, textLongEnough, subjectLongEnough } from './confession_utils'
+import {shouldDisable, textLongEnough, subjectLongEnough, SUBJECT_TOO_SHORT_MESSAGE, MESSAGE_TOO_SHORT_MESSAGE } from './confession_utils'
  
 import {BASE_URL} from '../../utils/url'
 
@@ -40,7 +40,7 @@ const Confession : React.FC = () => {
 				else if(data.success === true) {
 					alert(data.message)
 					//alert(JSON.stringify(data, null, 4)) // supposed to add misdemeanours  here
-					if(data.justTalked == false) {
+					if(data.justTalked === false) {
 						
 						//ADD CONFESSION TO LOCAL STORAGE TO GET BACK ON MIS PAGE
 						//console.log("added to list")
@@ -83,9 +83,9 @@ const Confession : React.FC = () => {
 	
 	let message = []
 	
-	if(!subjectLongEnough(subjectText)) message.push("Subject text needs to at least 2 characters")
+	if(!subjectLongEnough(subjectText)) message.push(SUBJECT_TOO_SHORT_MESSAGE)
 	
-	if(!textLongEnough(confessionText)) message.push("Confession text needs to be at least 10 characters")
+	if(!textLongEnough(confessionText)) message.push(MESSAGE_TOO_SHORT_MESSAGE)
 	
 	return <>
 	
