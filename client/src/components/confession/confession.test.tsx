@@ -3,7 +3,9 @@ import user from '@testing-library/user-event';
 
 import Confession from './confession';
 
-import { shouldDisable } from './confession_utils'
+import { shouldDisable, SUBJECT_TOO_SHORT_MESSAGE, MESSAGE_TOO_SHORT_MESSAGE } from './confession_utils'
+
+
 
 
 describe("Tests for confession page",  () => {
@@ -33,8 +35,84 @@ describe("Tests for confession page",  () => {
 	 
 	});
 
+	test('No warning messages if long enough subject and message', async() => { // this test causes warning for some reason
+			
+	  render(<Confession />);  
+	  const subject = screen.getAllByRole('textbox');
+	  await user.type(subject[0], 'I Confess');
+	  await user.type(subject[1], 'This is some very long text that is needed here');
+	   
+	  const message = screen.queryByText(SUBJECT_TOO_SHORT_MESSAGE);
+	  expect(message).toBeNull();
+	 
+	  const message2 = screen.queryByText(MESSAGE_TOO_SHORT_MESSAGE);
+	  expect(message2).toBeNull();
+	 
+	});
 
-	test('Submit button diabled because not enough text', async() => { // this test causes warning for some reason
+
+	test('Test if get warning messages when have not entered anything', () => { // this test causes warning for some reason
+			
+	  render(<Confession />);  
+	  const subject = screen.getAllByRole('textbox');
+	  //await user.type(subject[0], 'I');
+	  //await user.type(subject[1], 'This');
+	   
+	  const message = screen.queryByText(SUBJECT_TOO_SHORT_MESSAGE);
+	  expect(message).not.toBeNull();
+	 
+	  const message2 = screen.queryByText(MESSAGE_TOO_SHORT_MESSAGE);
+	  expect(message2).not.toBeNull();
+	 
+	});
+
+
+
+	test('Test if get warning messages subject and message too short', async() => { // this test causes warning for some reason
+			
+	  render(<Confession />);  
+	  const subject = screen.getAllByRole('textbox');
+	  await user.type(subject[0], 'I');
+	  await user.type(subject[1], 'This');
+	   
+	  const message = screen.queryByText(SUBJECT_TOO_SHORT_MESSAGE);
+	  expect(message).not.toBeNull();
+	 
+	  const message2 = screen.queryByText(MESSAGE_TOO_SHORT_MESSAGE);
+	  expect(message2).not.toBeNull();
+	 
+	});
+
+
+
+	test('Test warning message if subject too short but message is long enough ', async() => { // this test causes warning for some reason
+			
+	  render(<Confession />);  
+	  const subject = screen.getAllByRole('textbox');
+	 // await user.type(subject[0], 'I Confess');
+	  await user.type(subject[1], 'This is some very long text that is needed here');
+	   
+	  const message = screen.queryByText(SUBJECT_TOO_SHORT_MESSAGE);
+	  expect(message).not.toBeNull();
+	 
+	});
+
+
+	test('Test warning message if message too short but subject is long enough ', async() => { // this test causes warning for some reason
+			
+	  render(<Confession />);  
+	  const subject = screen.getAllByRole('textbox');
+	  await user.type(subject[0], 'I Confess');
+	  //await user.type(subject[1], 'This is some very long text that is needed here');
+	   
+	  const message = screen.queryByText(MESSAGE_TOO_SHORT_MESSAGE);
+	  expect(message).not.toBeNull();
+	 
+	});
+
+
+
+	test('Submit button disabled because not enough text', async() => { // this test causes warning for some reason
 			
 	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
@@ -46,19 +124,18 @@ describe("Tests for confession page",  () => {
 	 
 	});
 
-	test('Submit button disabled because not message not long enough', async() => { // this test causes warning for some reason
+	test('Submit button disabled because message not long enough', async() => { // this test causes warning for some reason
 			
 	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
 	  await user.type(subject[0], 'I Confess ');
 	 
-	   
 	  const button = screen.getByRole("button");
 	  expect(button).toBeDisabled();
 	 
 	});
 	
-	test('Submit button disabled because not subject not long enough', async() => { // this test causes warning for some reason
+	test('Submit button disabled because subject not long enough', async() => { // this test causes warning for some reason
 			
 	  render(<Confession />);  
 	  const subject = screen.getAllByRole('textbox');
@@ -69,7 +146,6 @@ describe("Tests for confession page",  () => {
 	  expect(button).toBeDisabled();
 	 
 	});
-
 
 })
 

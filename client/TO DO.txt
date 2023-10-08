@@ -1,0 +1,5 @@
+more testing on mis
+
+lots of stuff in https://github.com/techreturners/lm-code-intro-react-router-fakelandia/blob/main/docs/activity_3.md
+such as valid HTML, add confession to mid list, in form invalid textbox have red border
+see page to make sure
